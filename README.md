@@ -108,6 +108,7 @@ bin/Release/net9.0-android/publish/com.companyname.labortracker-Signed.apk
 - .NET 9.0 SDK
 - Android SDK (API 28+)
 - Эмулятор Android или физическое устройство
+
 **Для пользователя:**
 - Android 9.0 и выше
 - 2 ГБ RAM (рекомендуется 4 ГБ)
