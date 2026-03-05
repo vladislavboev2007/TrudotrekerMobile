@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:LaborTracker.Converters"
+             xmlns:models="clr-namespace:LaborTracker.Models"
+             xmlns:viewmodels="clr-namespace:LaborTracker.ViewModels"
+             x:Class="LaborTracker.Views.TasksPage"
+             x:DataType="viewmodels:TasksViewModel"
+             x:Name="TasksPageRoot">
+
+    <ContentPage.Resources>
+        <converters:StatusIndicatorColorConverter x:Key="StatusIndicatorColorConverter" />
+        <converters:TaskBackgroundColorConverter x:Key="TaskBackgroundColorConverter" />
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, Auto, *">
+
+        <!-- Заголовок -->
+        <Label Grid.Row="0" 
+               Text="Задачи"
+               FontFamily="Montserrat-Bold"
+               FontSize="24" 
+               TextColor="{AppThemeBinding Light=Black, Dark=White}"
+               Padding="20,20,20,10"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+
+        <!-- Поиск и кнопка добавления -->
+        <Grid Grid.Row="1" ColumnDefinitions="*, Auto" Padding="20,0,20,10">
+
+            <!-- Поле поиска -->
+            <SearchBar Grid.Column="0"
+                       Placeholder="Поиск задачи..."
+                       FontFamily="Montserrat"
+                       Margin="0,0,10,0"
+                       Text="{Binding SearchText, Mode=TwoWay}"
+                       PlaceholderColor="{AppThemeBinding Light=Gray, Dark=LightGray}"
+                       TextChanged="OnSearchTextChanged" />
+
+            <!-- Кнопка добавления -->
+            <Button Grid.Column="1"
+                    Text="Добавить"
+                    FontFamily="Montserrat-Medium"
+                    CornerRadius="10"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    HeightRequest="40"
+                    WidthRequest="100"
+                    Command="{Binding AddTaskCommand}" />
+        </Grid>
+
+        <!-- Список задач -->
+        <RefreshView Grid.Row="2" 
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding LoadTasksCommand}">
+
+            <CollectionView ItemsSource="{Binding FilteredTasks}"
+                           SelectionMode="None">
+
+                <CollectionView.EmptyView>
+                    <Border Stroke="LightGray"
+                            StrokeShape="RoundRectangle 12"
+                            BackgroundColor="White"
+                            Padding="20"
+                            Margin="20">
+                        <VerticalStackLayout HorizontalOptions="Center" 
+                                             VerticalOptions="Center"
+                                             Spacing="20">
+                            <Image Source="tasks_black.png"
+                                   WidthRequest="80"
+                                   HeightRequest="80"
+                                   Opacity="0.3" />
+                            <Label Text="Задачи не найдены"
+                                   FontFamily="Montserrat"
+                                   FontSize="16"
+                                   TextColor="Gray" />
+                        </VerticalStackLayout>
+                    </Border>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:TaskItem">
+                        <Border Stroke="LightGray"
+        StrokeThickness="1"
+        StrokeShape="RoundRectangle 12"
+        BackgroundColor="{Binding Status, Converter={StaticResource TaskBackgroundColorConverter}}"
+        Padding="15"
+        Margin="20,5"
+        InputTransparent="False">
+
+                            <Grid ColumnDefinitions="Auto, *, Auto"
+                                  RowDefinitions="Auto, Auto, Auto, Auto, Auto">
+
+                                <!-- Индикатор статуса -->
+                                <BoxView Grid.Column="2" Grid.Row="0"
+                                         WidthRequest="10"
+                                         HeightRequest="10"
+                                         CornerRadius="5"
+                                         BackgroundColor="{Binding Status, Converter={StaticResource StatusIndicatorColorConverter}}"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="Start" />
+
+
+                                <!-- Название задачи -->
+                                <Label Grid.Column="1" Grid.Row="0"
+                                       Text="{Binding Name}"
+                                       FontFamily="Montserrat-Medium"
+                                       FontSize="16"
+                                       MaxLines="2"
+                                       LineBreakMode="WordWrap"
+                                       TextColor="Black"/>
+
+                                <!-- Описание -->
+                                <Label Grid.Column="1" Grid.Row="1"
+                                       Text="{Binding Description}"
+                                       FontFamily="Montserrat"
+                                       FontSize="14"
+                                       TextColor="Gray"
+                                       MaxLines="2"
+                                       LineBreakMode="TailTruncation"
+                                       Margin="0,5,0,0" />
+
+                                <!-- Исполнитель -->
+                                <Label Grid.Column="1" Grid.Row="2"
+                                       Text="{Binding EmployeeName, StringFormat='Исполнитель: {0}'}"
+                                       FontFamily="Montserrat"
+                                       FontSize="12"
+                                       TextColor="#666"
+                                       Margin="0,5,0,0" />
+
+                                <!-- Дата -->
+                                <Label Grid.Column="1" Grid.Row="3"
+                                       Text="{Binding Date, StringFormat='Дата: {0:dd.MM.yyyy}'}"
+                                       FontFamily="Montserrat"
+                                       FontSize="12"
+                                       TextColor="#666"
+                                       Margin="0,5,0,0" />
+
+                                <!-- Время выполнения -->
+                                <Label Grid.Column="1" Grid.Row="4"
+                                       Text="{Binding DurationMinutes}"
+                                       FontFamily="Montserrat"
+                                       FontSize="12"
+                                       TextColor="#2196F3"
+                                       FontAttributes="Bold"
+                                       Margin="0,5,0,0" />
+
+                                <!-- Кнопки -->
+                                <HorizontalStackLayout Grid.Column="2" Grid.Row="4"
+                                                     HorizontalOptions="End"
+                                                     Spacing="5">
+
+                                    <ImageButton Source="start_icon.png"
+                 BackgroundColor="Transparent"
+                 HeightRequest="44"
+                 WidthRequest="44"
+                 Padding="5"
+                                                 Clicked="OnStartButtonClicked"
+                 IsVisible="{Binding CanStart}"
+                 Command="{Binding BindingContext.StartTaskCommand, 
+                         Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                 CommandParameter="{Binding}" />
+
+                                    <!-- Стоп -->
+                                    <ImageButton Source="stop_icon.png"
+                                                 BackgroundColor="Transparent"
+                                                 HeightRequest="30"
+                                                 WidthRequest="30"
+                                                 Clicked="OnStopButtonClicked"
+                                                 IsVisible="{Binding CanStop}"
+                                                 Command="{Binding BindingContext.StopTaskCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                 CommandParameter="{Binding}" />
+
+                                    <!-- Инфо -->
+                                    <ImageButton Source="info_icon.png"
+                                                 BackgroundColor="Transparent"
+                                                 HeightRequest="30"
+                                                 WidthRequest="30"
+                                                 Clicked="OnInfoButtonClicked"
+                                                 Command="{Binding BindingContext.InfoTaskCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                 CommandParameter="{Binding}" />
+
+                                    <!-- Удаление -->
+                                    <ImageButton Source="delete_icon.png"
+                                                 BackgroundColor="Transparent"
+                                                 HeightRequest="30"
+                                                 WidthRequest="30"
+                                                 
+                                                 Command="{Binding BindingContext.DeleteTaskCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                 CommandParameter="{Binding}" />
+                                </HorizontalStackLayout>
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+    </Grid>
+
+</ContentPage>

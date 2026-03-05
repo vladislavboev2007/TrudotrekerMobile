@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<color name="colorPrimary">#FF5252</color>
+	<color name="colorPrimaryDark">#D32F2F</color>
+	<color name="colorAccent">#FF5252</color>
+
+
+	<color name="tab_background">#FF5252</color>
+	<color name="tab_text_selected">#FFFFFF</color>
+	<color name="tab_text_unselected">#FFCDD2</color>
+
+	<color name="splash_background">#FF0000</color>
+</resources>

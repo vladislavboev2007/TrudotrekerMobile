@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+    x:Class="LaborTracker.Views.AddTaskPage"
+             Title="Добавление задачи">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Добавить новую задачу"
+                   FontFamily="Montserrat-Bold"
+                   FontSize="20"
+                   HorizontalOptions="Center" />
+
+            <!-- Название задачи -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Название задачи:"
+                       FontFamily="Montserrat" />
+                <Entry x:Name="TaskNameEntry"
+                       Placeholder="Введите название задачи"
+                       FontFamily="Montserrat" />
+            </VerticalStackLayout>
+
+            <!-- Описание -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Описание:"
+                       FontFamily="Montserrat" />
+                <Editor x:Name="DescriptionEditor"
+                        Placeholder="Введите описание задачи"
+                        AutoSize="TextChanges"
+                        HeightRequest="100"
+                        FontFamily="Montserrat" />
+            </VerticalStackLayout>
+
+            <!-- Исполнитель -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Исполнитель:"
+                       FontFamily="Montserrat" />
+                <Picker x:Name="EmployeePicker"
+                        Title="Выберите сотрудника"
+                        FontFamily="Montserrat" />
+            </VerticalStackLayout>
+
+            <!-- Кнопки -->
+            <VerticalStackLayout Spacing="10" Padding="0,20">
+                <Button Text="Добавить задачу"
+                        FontFamily="Montserrat-Medium"
+                        CornerRadius="10"
+                        BackgroundColor="#4CAF50"
+                        TextColor="White"
+                        HeightRequest="50"
+                        Clicked="OnAddTaskClicked" />
+
+                <Button Text="Отмена"
+                        FontFamily="Montserrat-Medium"
+                        CornerRadius="10"
+                        BackgroundColor="#F44336"
+                        TextColor="White"
+                        HeightRequest="50"
+                        Clicked="OnCancelClicked" />
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

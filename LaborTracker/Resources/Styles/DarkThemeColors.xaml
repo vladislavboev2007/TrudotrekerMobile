@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LaborTracker.Resources.Styles.DarkThemeColors">
+
+    <!-- Заголовки страниц - светлые в темной теме -->
+    <Color x:Key="PageTitleColor">#FFFFFF</Color>
+
+    <!-- Названия задач - черные в любой теме (для контраста на цветных карточках) -->
+    <Color x:Key="TaskNameColor">#000000</Color>
+
+    <!-- ФИО сотрудника - черный -->
+    <Color x:Key="EmployeeNameColor">#000000</Color>
+
+    <!-- Вторичный текст (дата, время) - темно-серый для читаемости -->
+    <Color x:Key="SecondaryTextColor">#333333</Color>
+
+    <Color x:Key="SearchBarIconColor">#000000</Color>
+
+    <Color x:Key="SearchBarBorderColor">#CCCCCC</Color>
+</ResourceDictionary>

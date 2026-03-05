@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LaborTracker.Views.SplashPage"
+             BackgroundColor="#FF0000">
+
+    <Grid x:Name="MainGrid">
+        <VerticalStackLayout x:Name="MainStackLayout" 
+                            Spacing="40" 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center"
+                            Padding="20">
+
+            <!-- Заголовок -->
+            <Label Text="Трудотрекер"
+                   FontFamily="Montserrat-Bold"
+                   FontSize="36"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+
+            <!-- Индикатор загрузки -->
+            <ActivityIndicator IsRunning="True" 
+                              Color="White" 
+                              WidthRequest="60" 
+                              HeightRequest="60"
+                              HorizontalOptions="Center" />
+
+            <!-- Статус -->
+            <Label x:Name="StatusLabel"
+                   Text="Инициализация приложения..."
+                   FontFamily="Montserrat"
+                   FontSize="16"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   MaxLines="3" />
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

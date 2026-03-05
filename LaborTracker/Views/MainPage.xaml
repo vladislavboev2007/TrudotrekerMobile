@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:LaborTracker.ViewModels"
+             xmlns:converters="clr-namespace:LaborTracker.Converters"
+             x:Class="LaborTracker.Views.MainPage"
+             x:DataType="viewmodels:MainViewModel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Заголовок -->
+            <Label Text="Главная"
+                   FontFamily="Montserrat-Bold"
+                   FontSize="28"
+                   TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                   HorizontalOptions="Center" />
+
+            <!-- Карточка статистики -->
+            <Border Stroke="LightGray"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12"
+                    BackgroundColor="White"
+                    Padding="20">
+                <VerticalStackLayout Spacing="15">
+
+                    <!-- Общее время работы -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Общее время работы:"
+                               FontFamily="Montserrat"
+                               FontSize="14"
+                               TextColor="#666" />
+                        <Label Text="{Binding FormattedWorkTime}"
+                               FontFamily="Montserrat-Bold"
+                               FontSize="36"
+                               TextColor="#2196F3" />
+                    </VerticalStackLayout>
+
+                    <!-- Статистика задач -->
+                    <Grid ColumnDefinitions="*, *" ColumnSpacing="20">
+
+                        <!-- Всего задач -->
+                        <Border Stroke="LightGray"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 8"
+                                BackgroundColor="#E3F2FD"
+                                Padding="15">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Всего задач:"
+                                       FontFamily="Montserrat"
+                                       FontSize="12"
+                                       TextColor="#666" />
+                                <Label Text="{Binding TotalTasks}"
+                                       FontFamily="Montserrat-Bold"
+                                       FontSize="24"
+                                       TextColor="#2196F3" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Завершенных задач -->
+                        <Border Stroke="LightGray"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 8"
+                                BackgroundColor="#E8F5E9"
+                                Padding="15"
+                                Grid.Column="1">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Завершено:"
+                                       FontFamily="Montserrat"
+                                       FontSize="12"
+                                       TextColor="#666" />
+                                <Label Text="{Binding CompletedTasks}"
+                                       FontFamily="Montserrat-Bold"
+                                       FontSize="24"
+                                       TextColor="#4CAF50" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Кнопки навигации -->
+            <VerticalStackLayout Spacing="15">
+
+                <!-- Кнопка задач -->
+                <Button Text="Перейти к списку задач"
+                        FontFamily="Montserrat-Medium"
+                        CornerRadius="10"
+                        BackgroundColor="#2196F3"
+                        TextColor="White"
+                        HeightRequest="55"
+                        Command="{Binding GoToTasksCommand}" />
+
+                <!-- Кнопка сотрудников -->
+                <Button Text="Перейти к списку сотрудников"
+                        FontFamily="Montserrat-Medium"
+                        CornerRadius="10"
+                        BackgroundColor="#4CAF50"
+                        TextColor="White"
+                        HeightRequest="55"
+                        Command="{Binding GoToEmployeesCommand}" />
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
