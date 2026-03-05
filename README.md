@@ -1,6 +1,6 @@
 ## 📂 Структура репозитория
 ```text
-LaborTrackerMobile/
+LaborTracker/
 ├── .github/                          # GitHub Actions (CI/CD)
 │   └── workflows/
 │       └── build.yml                  # Автоматическая сборка APK
@@ -38,7 +38,7 @@ LaborTrackerMobile/
 ├── AppShell.xaml.cs                     # Логика навигации
 ├── MauiProgram.cs                       # Точка входа и DI
 ├── appsettings.json                     # Конфигурация
-├── LaborTrackerMobile.csproj            # Файл проекта
+├── LaborTracker.csproj            # Файл проекта
 └── README.md                            # Документация
 ```
 ## 📥 Как клонировать и запустить
