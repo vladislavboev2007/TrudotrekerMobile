@@ -93,14 +93,14 @@ dotnet publish -c Release -f net9.0-android `
 bin/Release/net9.0-android/publish/com.companyname.labortracker-Signed.apk
 ```
 ## 🛠️ Технологический стек
-**Платформа:**	.NET MAUI 9.0
-**Язык:**	C# 12.0
-**База данных:**	SQLite (Microsoft.Data.Sqlite)
-**Архитектура:**	MVVM (Model-View-ViewModel)
-**DI-контейнер:**	Microsoft.Extensions.DependencyInjection
-**Команды:**	CommunityToolkit.MVVM
-**Навигация:**	Shell (встроенная)
-**UI-компоненты:**	Microsoft.Maui.Controls
+- **Платформа:**	.NET MAUI 9.0
+- **Язык:**	C# 12.0
+= **База данных:**	SQLite (Microsoft.Data.Sqlite)
+- **Архитектура:**	MVVM (Model-View-ViewModel)
+- **DI-контейнер:**	Microsoft.Extensions.DependencyInjection
+- **Команды:**	CommunityToolkit.MVVM
+- **Навигация:**	Shell (встроенная)
+- **UI-компоненты:**	Microsoft.Maui.Controls
 
 ## 📋 Системные требования
 **Для разработки:**
@@ -114,11 +114,11 @@ bin/Release/net9.0-android/publish/com.companyname.labortracker-Signed.apk
 - 100 МБ свободного места
 
 ## 📱 Функционал приложения
-**Загрузка:**	Splash-экран с логотипом и инициализацией БД
-**Главная:** Статистика (общее время, всего задач, завершено)
-**Задачи:**	Список задач, поиск, фильтрация, действия
-**Сотрудники:**	Список сотрудников, добавление, удаление
-**Добавление:** задачи	Форма для создания новой задачи
+- **Загрузка:**	Splash-экран с логотипом и инициализацией БД
+- **Главная:** Статистика (общее время, всего задач, завершено)
+- **Задачи:**	Список задач, поиск, фильтрация, действия
+- **Сотрудники:**	Список сотрудников, добавление, удаление
+- **Добавление:** задачи	Форма для создания новой задачи
 
 Основные действия с задачами:
 - ▶️ Старт — запуск таймера
