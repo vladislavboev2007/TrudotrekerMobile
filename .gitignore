@@ -1,0 +1,41 @@
+## Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+[Bb]in/
+[Oo]bj/
+
+## MAUI / Xamarin / .NET
+*.apk
+*.ipa
+*.pkg
+*.appx
+packages/
+*.nuget.props
+*.nuget.targets
+
+## Visual Studio Code
+.vscode/
+
+## OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+## Project specific
+*.db
+*.log
+*.tmp
+*.temp
+EOF
