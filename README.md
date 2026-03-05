@@ -48,6 +48,7 @@ git clone https://github.com/vladislavboev2007/LaborTrackerMobile.git
 cd LaborTrackerMobile
 ```
 **2. Открытие в Visual Studio 2022**
+
 Откройте файл LaborTrackerMobile.sln в Visual Studio 2022 (версия 17.8 или выше).
 
 **3. Восстановление зависимостей**
@@ -55,6 +56,7 @@ cd LaborTrackerMobile
 dotnet restore
 ```
 **4. Запуск на эмуляторе Android**
+
 Выберите целевое устройство (Android Emulator) и нажмите F5 или выполните:
 
 ```bash
@@ -68,8 +70,11 @@ cd C:\путь\к\проекту\LaborTrackerMobile
 keytool -genkeypair -v -keystore LaborTracker.keystore -alias labor_tracker -keyalg RSA -keysize 2048 -validity 10000
 ```
 Параметры:
+
 **Пароль:** labor2024
+
 **Организация:** LaborTracker
+
 **Страна:** RU
 
 **2. Сборка подписанного APK**
@@ -82,6 +87,7 @@ dotnet publish -c Release -f net9.0-android `
   /p:AndroidSigningStorePass=labor2024
 ```
 **3. Готовый APK**
+
 Файл находится по пути:
 ```text
 bin/Release/net9.0-android/publish/com.companyname.labortracker-Signed.apk
@@ -137,8 +143,8 @@ public class ApiService
 }
 ```
 
-##📄 Лицензия
+## 📄 Лицензия
 Проект распространяется под лицензией MIT. Подробнее см. файл LICENSE.
 
-##⚠️ Важное примечание
+## ⚠️ Важное примечание
 Данный проект разработан с использованием .NET 9.0 и C# 12.0. Для корректной сборки и запуска необходима указанная версия SDK.
