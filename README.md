@@ -95,7 +95,7 @@ bin/Release/net9.0-android/publish/com.companyname.labortracker-Signed.apk
 ## 🛠️ Технологический стек
 - **Платформа:**	.NET MAUI 9.0
 - **Язык:**	C# 12.0
-= **База данных:**	SQLite (Microsoft.Data.Sqlite)
+- **База данных:**	SQLite (Microsoft.Data.Sqlite)
 - **Архитектура:**	MVVM (Model-View-ViewModel)
 - **DI-контейнер:**	Microsoft.Extensions.DependencyInjection
 - **Команды:**	CommunityToolkit.MVVM
